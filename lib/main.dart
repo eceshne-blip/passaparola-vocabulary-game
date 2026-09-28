@@ -32,100 +32,106 @@ class ActiveQuestion {
   final String letter;
   final String clue;
   final String answer;
+  final String meaning;
   LetterState state;
 
   ActiveQuestion({
     required this.letter,
     required this.clue,
     required this.answer,
+    required this.meaning,
     this.state = LetterState.idle,
   });
 }
 
 final List<WordData> wordDatabase = [
-  // A1 - A2 (Temel)
+  // A1 - A2
   WordData(letter: 'A', levelGroup: 'A1-A2', answer: 'APPLE', clueEn: 'A sweet red or green fruit that keeps the doctor away.', clueTr: 'Kırmızı veya yeşil renkli, tatlı ve sulu bir meyve.'),
-  WordData(letter: 'B', levelGroup: 'A1-A2', answer: 'BICYCLE', clueEn: 'A vehicle with two wheels that you pedal.', clueTr: 'Pedalları ayakla çevrilerek sürülen iki tekerlekli taşıt, bisiklet.'),
+  WordData(letter: 'A', levelGroup: 'A1-A2', answer: 'AIRPORT', clueEn: 'A place where planes take off and land.', clueTr: 'Uçakların kalkıp indiği yolcu alanı, havaalanı.'),
+  WordData(letter: 'B', levelGroup: 'A1-A2', answer: 'BICYCLE', clueEn: 'A vehicle with two wheels that you pedal.', clueTr: 'Pedalları çevrilerek sürülen iki tekerlekli taşıt, bisiklet.'),
+  WordData(letter: 'B', levelGroup: 'A1-A2', answer: 'BANANA', clueEn: 'A long curved yellow fruit with soft sweet flesh.', clueTr: 'Sarı kabuklu, tatlı tropikal bir meyve, muz.'),
   WordData(letter: 'C', levelGroup: 'A1-A2', answer: 'CAMERA', clueEn: 'A device used for taking photographs or recording videos.', clueTr: 'Fotoğraf veya video çekmek için kullanılan cihaz, kamera.'),
+  WordData(letter: 'C', levelGroup: 'A1-A2', answer: 'COFFEE', clueEn: 'A hot dark drink made from roasted beans.', clueTr: 'Kavrulmuş çekirdeklerden demlenen sıcak içecek, kahve.'),
   WordData(letter: 'D', levelGroup: 'A1-A2', answer: 'DANGER', clueEn: 'The possibility of suffering harm, damage, or injury.', clueTr: 'Zarar görme veya yaralanma olasılığı durumu, tehlike.'),
-  WordData(letter: 'E', levelGroup: 'A1-A2', answer: 'ELEPHANT', clueEn: 'The largest land animal, recognizable by its long trunk.', clueTr: 'Uzun hortumu ve büyük kulaklarıyla bilinen en iri kara hayvanı, fil.'),
-  WordData(letter: 'F', levelGroup: 'A1-A2', answer: 'FARMER', clueEn: 'A person who owns or manages a farm and grows food.', clueTr: 'Tarım ve hayvancılıkla uğraşan, tarlayı işleyen kimse, çiftçi.'),
-  WordData(letter: 'G', levelGroup: 'A1-A2', answer: 'GARDEN', clueEn: 'A piece of ground next to a house used for growing flowers.', clueTr: 'Çiçeklerin, ağaçların veya sebzelerin yetiştirildiği alan, bahçe.'),
-  WordData(letter: 'H', levelGroup: 'A1-A2', answer: 'HOSPITAL', clueEn: 'A place where sick or injured people are treated by doctors.', clueTr: 'Hasta ve yaralıların tedavi edildiği sağlık kuruluşu, hastane.'),
-  WordData(letter: 'I', levelGroup: 'A1-A2', answer: 'ISLAND', clueEn: 'A piece of land completely surrounded by water.', clueTr: 'Her yanı suyla çevrilmiş kara parçası, ada.'),
-  WordData(letter: 'J', levelGroup: 'A1-A2', answer: 'JACKET', clueEn: 'A short coat that you wear over clothes to keep warm.', clueTr: 'Kıyafetlerin üstüne giyilen kollu ve önü açılır üst giysisi, ceket.'),
-  WordData(letter: 'K', levelGroup: 'A1-A2', answer: 'KITCHEN', clueEn: 'A room used for cooking and preparing food.', clueTr: 'Yemek pişirilen ve yiyecek hazırlanan oda, mutfak.'),
-  WordData(letter: 'L', levelGroup: 'A1-A2', answer: 'LIBRARY', clueEn: 'A building or room containing collections of books to read.', clueTr: 'Kitapların korunduğu, ödünç verildiği veya okunduğu yer, kütüphane.'),
-  WordData(letter: 'M', levelGroup: 'A1-A2', answer: 'MONKEY', clueEn: 'A playful mammal that climbs trees and loves bananas.', clueTr: 'Ağaçlara tırmanmasıyla ve muz sevmesiyle bilinen çevik primat, maymun.'),
-  WordData(letter: 'N', levelGroup: 'A1-A2', answer: 'NEIGHBOR', clueEn: 'A person living next door or near to you.', clueTr: 'Evi veya dairesi sizinkine çok yakın olan kimse, komşu.'),
-  WordData(letter: 'O', levelGroup: 'A1-A2', answer: 'OCTOPUS', clueEn: 'A sea creature with a soft body and eight long arms.', clueTr: 'Denizlerde yaşayan, sekiz kollu yumuşakça, ahtapot.'),
-  WordData(letter: 'P', levelGroup: 'A1-A2', answer: 'PASSPORT', clueEn: 'An official document certifying identity for foreign travel.', clueTr: 'Yurt dışına çıkarken kimliği belgeleyen resmi evrak, pasaport.'),
-  WordData(letter: 'Q', levelGroup: 'A1-A2', answer: 'QUEEN', clueEn: 'The female ruler of an independent royal nation.', clueTr: 'Bir krallığı yöneten veya kralın eşi olan kadın hükümdar, kraliçe.'),
-  WordData(letter: 'R', levelGroup: 'A1-A2', answer: 'RIVER', clueEn: 'A large natural stream of water flowing in a channel to the sea.', clueTr: 'Denize veya göle doğru sürekli akan büyük doğal su yatağı, nehir.'),
-  WordData(letter: 'S', levelGroup: 'A1-A2', answer: 'SUMMER', clueEn: 'The warmest season of the year, between spring and autumn.', clueTr: 'Yılın en sıcak mevsimi, ilkbahar ile sonbahar arası; yaz.'),
-  WordData(letter: 'T', levelGroup: 'A1-A2', answer: 'TEACHER', clueEn: 'A person who educates students in a school.', clueTr: 'Bir okulda öğrencilere bilgi ve beceri öğreten meslek sahibi, öğretmen.'),
-  WordData(letter: 'U', levelGroup: 'A1-A2', answer: 'UMBRELLA', clueEn: 'A folding circular canopy protecting against wet rain.', clueTr: 'Yağmurdan veya güneşten korunmak için açılan katlanır siperlik, şemsiye.'),
-  WordData(letter: 'V', levelGroup: 'A1-A2', answer: 'VILLAGE', clueEn: 'A small group of houses in a rural countryside area.', clueTr: 'Kırsal kesimde yer alan, kasaba veya şehirden küçük yerleşim, köy.'),
-  WordData(letter: 'W', levelGroup: 'A1-A2', answer: 'WINDOW', clueEn: 'An opening in a wall fitted with glass to admit light.', clueTr: 'Duvarlara açılan, odaya ışık girmesini sağlayan camlı çerçeve, pencere.'),
-  WordData(letter: 'X', levelGroup: 'A1-A2', answer: 'XYLOPHONE', clueEn: 'A musical instrument played by striking wooden bars with sticks.', clueTr: 'Tahta çubuklara tokmakla vurularak çalınan vurmalı müzik aleti, ksilofon.'),
-  WordData(letter: 'Y', levelGroup: 'A1-A2', answer: 'YESTERDAY', clueEn: 'On the day before today.', clueTr: 'Bugünden hemen bir önceki gün, dün.'),
-  WordData(letter: 'Z', levelGroup: 'A1-A2', answer: 'ZEBRA', clueEn: 'An African wild horse with black and white stripes.', clueTr: 'Afrika savanlarında yaşayan, siyah-beyaz çizgili yaban atı, zebra.'),
+  WordData(letter: 'D', levelGroup: 'A1-A2', answer: 'DOCTOR', clueEn: 'A person qualified to treat people who are ill.', clueTr: 'Hastalıkları teşhis ve tedavi eden tıp uzmanı, doktor.'),
+  WordData(letter: 'E', levelGroup: 'A1-A2', answer: 'ELEPHANT', clueEn: 'The largest land animal with a trunk and big tusks.', clueTr: 'Uzun hortumu ve dişleriyle bilinen iri kara memelisi, fil.'),
+  WordData(letter: 'F', levelGroup: 'A1-A2', answer: 'FARMER', clueEn: 'A person who owns or manages a farm and grows food.', clueTr: 'Toprağı ekip biçen kimse, çiftçi.'),
+  WordData(letter: 'G', levelGroup: 'A1-A2', answer: 'GARDEN', clueEn: 'A piece of ground used for growing flowers or plants.', clueTr: 'Çiçek veya sebze yetiştirilen bahçe.'),
+  WordData(letter: 'H', levelGroup: 'A1-A2', answer: 'HOSPITAL', clueEn: 'A place where sick people receive medical treatment.', clueTr: 'Hastaların tedavi edildiği sağlık kurumu, hastane.'),
+  WordData(letter: 'I', levelGroup: 'A1-A2', answer: 'ISLAND', clueEn: 'A piece of land completely surrounded by water.', clueTr: 'Dört tarafı sularla çevrili kara parçası, ada.'),
+  WordData(letter: 'J', levelGroup: 'A1-A2', answer: 'JACKET', clueEn: 'A short coat with sleeves that opens at the front.', clueTr: 'Üst giysisi, ceket.'),
+  WordData(letter: 'K', levelGroup: 'A1-A2', answer: 'KITCHEN', clueEn: 'A room where food is kept and cooked.', clueTr: 'Yemek pişirilen oda, mutfak.'),
+  WordData(letter: 'L', levelGroup: 'A1-A2', answer: 'LIBRARY', clueEn: 'A building containing collections of books.', clueTr: 'Kitapların bulunduğu yer, kütüphane.'),
+  WordData(letter: 'M', levelGroup: 'A1-A2', answer: 'MONKEY', clueEn: 'A mammal that climbs trees and has a tail.', clueTr: 'Ağaçlara tırmanan primat, maymun.'),
+  WordData(letter: 'N', levelGroup: 'A1-A2', answer: 'NEIGHBOR', clueEn: 'A person who lives next door or close to you.', clueTr: 'Evi yakın olan kimse, komşu.'),
+  WordData(letter: 'O', levelGroup: 'A1-A2', answer: 'OCTOPUS', clueEn: 'A soft-bodied marine creature with eight arms.', clueTr: 'Sekiz kollu deniz yumuşakçası, ahtapot.'),
+  WordData(letter: 'P', levelGroup: 'A1-A2', answer: 'PASSPORT', clueEn: 'An official document certifying identity for travel.', clueTr: 'Yurt dışı seyahat belgesi, pasaport.'),
+  WordData(letter: 'Q', levelGroup: 'A1-A2', answer: 'QUEEN', clueEn: 'The female ruler of an independent royal state.', clueTr: 'Kadın hükümdar, kraliçe.'),
+  WordData(letter: 'R', levelGroup: 'A1-A2', answer: 'RIVER', clueEn: 'A large natural stream of water flowing to the sea.', clueTr: 'Büyük doğal akarsu, nehir.'),
+  WordData(letter: 'S', levelGroup: 'A1-A2', answer: 'SUMMER', clueEn: 'The warmest season of the year.', clueTr: 'En sıcak mevsim, yaz.'),
+  WordData(letter: 'T', levelGroup: 'A1-A2', answer: 'TEACHER', clueEn: 'A person who instructs others in a school.', clueTr: 'Öğretim görevlisi/öğretmen.'),
+  WordData(letter: 'U', levelGroup: 'A1-A2', answer: 'UMBRELLA', clueEn: 'A folding circular canopy protecting against rain.', clueTr: 'Yağmur siperliği, şemsiye.'),
+  WordData(letter: 'V', levelGroup: 'A1-A2', answer: 'VILLAGE', clueEn: 'A small group of houses in a rural area.', clueTr: 'Kırsal yerleşim yeri, köy.'),
+  WordData(letter: 'W', levelGroup: 'A1-A2', answer: 'WINDOW', clueEn: 'An opening in a wall fitted with glass.', clueTr: 'Camlı çerçeve, pencere.'),
+  WordData(letter: 'X', levelGroup: 'A1-A2', answer: 'XYLOPHONE', clueEn: 'A musical instrument played with sticks on wooden bars.', clueTr: 'Vurmalı müzik aleti, ksilofon.'),
+  WordData(letter: 'Y', levelGroup: 'A1-A2', answer: 'YESTERDAY', clueEn: 'The day before today.', clueTr: 'Bugünden önceki gün, dün.'),
+  WordData(letter: 'Z', levelGroup: 'A1-A2', answer: 'ZEBRA', clueEn: 'An African wild horse with stripes.', clueTr: 'Çizgili yabani at, zebra.'),
 
-  // B1 - B2 (Orta - İleri)
-  WordData(letter: 'A', levelGroup: 'B1-B2', answer: 'AMBITION', clueEn: 'A strong desire to achieve success, power, or fame.', clueTr: 'Bir hedefe veya başarıya ulaşma konusundaki güçlü istek, hırs/tutku.'),
-  WordData(letter: 'B', levelGroup: 'B1-B2', answer: 'BEHAVIOR', clueEn: 'The way in which one acts or conducts oneself.', clueTr: 'Bir kimsenin sergilediği tutum ve hareket tarzı, davranış.'),
-  WordData(letter: 'C', levelGroup: 'B1-B2', answer: 'CONFIDENCE', clueEn: 'A feeling of self-assurance in one\'s abilities or qualities.', clueTr: 'Kendi yeteneklerine ve gücüne güvenme duygusu, özgüven.'),
-  WordData(letter: 'D', levelGroup: 'B1-B2', answer: 'DECISION', clueEn: 'A conclusion or resolution reached after consideration.', clueTr: 'Düşünüp tarttıktan sonra varılan kesin sonuç veya yargı, karar.'),
-  WordData(letter: 'E', levelGroup: 'B1-B2', answer: 'ENVIRONMENT', clueEn: 'The natural world and ecosystem surrounding living things.', clueTr: 'Tüm canlıların içinde barındığı doğal ortam ve eko-düzen, çevre.'),
-  WordData(letter: 'F', levelGroup: 'B1-B2', answer: 'FREEDOM', clueEn: 'The power or right to act, speak, or think without restraint.', clueTr: 'Kişinin hiçbir dış baskı altında kalmadan hareket edebilmesi, özgürlük.'),
-  WordData(letter: 'G', levelGroup: 'B1-B2', answer: 'GENEROUS', clueEn: 'Showing a readiness to give more of something than is strictly necessary.', clueTr: 'Elindekileri, parasını ve imkanlarını seve seve paylaşan kimse, cömert.'),
-  WordData(letter: 'H', levelGroup: 'B1-B2', answer: 'HERITAGE', clueEn: 'Property, customs, or culture inherited from past generations.', clueTr: 'Geçmiş nesillerden devralınan tarihi veya kültürel değerler bütünü, miras.'),
-  WordData(letter: 'I', levelGroup: 'B1-B2', answer: 'INFLUENCE', clueEn: 'The capacity to have an effect on the character or behavior of someone.', clueTr: 'Başkalarının düşüncelerini ve eylemlerini yönlendirebilme gücü, etki/nüfuz.'),
-  WordData(letter: 'J', levelGroup: 'B1-B2', answer: 'JUSTICE', clueEn: 'Just behavior or treatment; fair administration of law.', clueTr: 'Hak ve hukuka uygunluk, herkese hakkını verme ilkesi, adalet.'),
-  WordData(letter: 'K', levelGroup: 'B1-B2', answer: 'KNOWLEDGE', clueEn: 'Facts, information, and skills acquired through experience or education.', clueTr: 'Öğrenme, araştırma veya gözlem yoluyla elde edilen müktesebat, bilgi.'),
-  WordData(letter: 'L', levelGroup: 'B1-B2', answer: 'LEADERSHIP', clueEn: 'The action or ability of directing a group of people.', clueTr: 'Bir grubu veya topluluğu yönetme ve peşinden sürükleme kabiliyeti, liderlik.'),
-  WordData(letter: 'M', levelGroup: 'B1-B2', answer: 'MOTIVATION', clueEn: 'The general desire or willingness of someone to do something.', clueTr: 'Birisini bir amaç uğruna harekete geçiren istek ve şevk kaynağı, motivasyon.'),
-  WordData(letter: 'N', levelGroup: 'B1-B2', answer: 'NECESSARY', clueEn: 'Required to be done, achieved, or present; essential.', clueTr: 'Olmazsa olmaz, mutlaka yapılması veya bulunması icap eden, gerekli/zorunlu.'),
-  WordData(letter: 'O', levelGroup: 'B1-B2', answer: 'OPINION', clueEn: 'A view or judgment formed about something, not necessarily based on fact.', clueTr: 'Bir konu üzerinde zihinde oluşan kişisel düşünce, görüş/fikir.'),
-  WordData(letter: 'P', levelGroup: 'B1-B2', answer: 'PATIENCE', clueEn: 'The capacity to accept delay or suffering without getting angry.', clueTr: 'Zorluklara ve gecikmelere karşı öfkelenmeden metanetle bekleme gücü, sabır.'),
-  WordData(letter: 'Q', levelGroup: 'B1-B2', answer: 'QUALIFIED', clueEn: 'Officially recognized as being trained to perform a particular job.', clueTr: 'Gerekli eğitim, sertifika ve yeterliliğe sahip olan, nitelikli/vasıflı.'),
-  WordData(letter: 'R', levelGroup: 'B1-B2', answer: 'RESPONSIBLE', clueEn: 'Having an obligation to do something as part of a job or role.', clueTr: 'Görevini yerine getirmekle yükümlü olan kimse, sorumlu.'),
-  WordData(letter: 'S', levelGroup: 'B1-B2', answer: 'STRATEGY', clueEn: 'A plan of action designed to achieve a long-term overall aim.', clueTr: 'Belirlenen hedeflere varmak için çizilen kapsamlı eylem planı, strateji.'),
-  WordData(letter: 'T', levelGroup: 'B1-B2', answer: 'TALENTED', clueEn: 'Having a natural aptitude or skill for something creative.', clueTr: 'Doğuştan gelen üstün beceri ve yatkınlığı olan kimse, yetenekli.'),
-  WordData(letter: 'U', levelGroup: 'B1-B2', answer: 'URGENT', clueEn: 'Requiring immediate action or attention.', clueTr: 'Gecikmeye tahammülü olmayan, ivedilikle halledilmesi gereken, acil.'),
-  WordData(letter: 'V', levelGroup: 'B1-B2', answer: 'VOLUNTEER', clueEn: 'A person who freely offers to take part in an enterprise or service.', clueTr: 'Hiçbir maddi karşılık beklemeden kendi isteğiyle çalışan kimse, gönüllü.'),
-  WordData(letter: 'W', levelGroup: 'B1-B2', answer: 'WARNING', clueEn: 'A statement or event that indicates a possible or impending danger.', clueTr: 'Olası bir tehlike veya hataya karşı yapılan ikaz, uyarı.'),
-  WordData(letter: 'X', levelGroup: 'B1-B2', answer: 'XENOPHOBIA', clueEn: 'Dislike of or prejudice against people from other countries.', clueTr: 'Yabancılardan veya yabancı kültürlerden yersiz korkma, yabancı düşmanlığı.'),
-  WordData(letter: 'Y', levelGroup: 'B1-B2', answer: 'YIELD', clueEn: 'To produce or provide a natural, agricultural, or financial product.', clueTr: 'Ürün vermek, mahsul veya kazanç getirmek; hasılat/getiri.'),
-  WordData(letter: 'Z', levelGroup: 'B1-B2', answer: 'JEALOUS', clueEn: 'Envious of someone else\'s achievements (Sound of Z).', clueTr: 'Kıskanç veya çekemez kimse.'),
+  // B1 - B2
+  WordData(letter: 'A', levelGroup: 'B1-B2', answer: 'AMBITION', clueEn: 'A strong desire to achieve success or fame.', clueTr: 'Başarı ve hedeflere ulaşma isteği, hırs.'),
+  WordData(letter: 'B', levelGroup: 'B1-B2', answer: 'BEHAVIOR', clueEn: 'The way someone acts toward others.', clueTr: 'Tutum ve hareket tarzı, davranış.'),
+  WordData(letter: 'C', levelGroup: 'B1-B2', answer: 'CONFIDENCE', clueEn: 'A feeling of self-assurance in abilities.', clueTr: 'Kendi gücüne inanma, özgüven.'),
+  WordData(letter: 'D', levelGroup: 'B1-B2', answer: 'DECISION', clueEn: 'A choice reached after consideration.', clueTr: 'Varılan kesin hüküm, karar.'),
+  WordData(letter: 'E', levelGroup: 'B1-B2', answer: 'ENVIRONMENT', clueEn: 'The natural world surrounding living things.', clueTr: 'Doğal yaşam alanı, çevre.'),
+  WordData(letter: 'F', levelGroup: 'B1-B2', answer: 'FREEDOM', clueEn: 'The power to act without restraint.', clueTr: 'Kendi iradesiyle hareket etme, özgürlük.'),
+  WordData(letter: 'G', levelGroup: 'B1-B2', answer: 'GENEROUS', clueEn: 'Willing to give more help than usual.', clueTr: 'Paylaşmayı seven, cömert.'),
+  WordData(letter: 'H', levelGroup: 'B1-B2', answer: 'HERITAGE', clueEn: 'Culture inherited from past generations.', clueTr: 'Geçmişten devralınan kültürel miras.'),
+  WordData(letter: 'I', levelGroup: 'B1-B2', answer: 'INFLUENCE', clueEn: 'The capacity to affect someone\'s actions.', clueTr: 'Yönlendirme gücü, etki/nüfuz.'),
+  WordData(letter: 'J', levelGroup: 'B1-B2', answer: 'JUSTICE', clueEn: 'Fair treatment and administration of law.', clueTr: 'Hak ve hukuka uygunluk, adalet.'),
+  WordData(letter: 'K', levelGroup: 'B1-B2', answer: 'KNOWLEDGE', clueEn: 'Facts acquired through study or experience.', clueTr: 'Öğrenilen malumat, bilgi.'),
+  WordData(letter: 'L', levelGroup: 'B1-B2', answer: 'LEADERSHIP', clueEn: 'The action of guiding a group.', clueTr: 'Yol gösterme ve sevk yeteneği, liderlik.'),
+  WordData(letter: 'M', levelGroup: 'B1-B2', answer: 'MOTIVATION', clueEn: 'A reason for behaving in a particular way.', clueTr: 'Eyleme geçiren içsel istek, motivasyon.'),
+  WordData(letter: 'N', levelGroup: 'B1-B2', answer: 'NECESSARY', clueEn: 'Required to be done; essential.', clueTr: 'Zorunlu, gerekli.'),
+  WordData(letter: 'O', levelGroup: 'B1-B2', answer: 'OPINION', clueEn: 'A personal view formed about something.', clueTr: 'Kişisel görüş, fikir.'),
+  WordData(letter: 'P', levelGroup: 'B1-B2', answer: 'PATIENCE', clueEn: 'The capacity to endure delay without anger.', clueTr: 'Metanetle bekleme, sabır.'),
+  WordData(letter: 'Q', levelGroup: 'B1-B2', answer: 'QUALIFIED', clueEn: 'Officially trained to perform a job.', clueTr: 'Eğitimli, nitelikli.'),
+  WordData(letter: 'R', levelGroup: 'B1-B2', answer: 'RESPONSIBLE', clueEn: 'Having an obligation to do something.', clueTr: 'Görev yükümlülüğü olan, sorumlu.'),
+  WordData(letter: 'S', levelGroup: 'B1-B2', answer: 'STRATEGY', clueEn: 'A plan of action to achieve an aim.', clueTr: 'Uzun vadeli eylem planı, strateji.'),
+  WordData(letter: 'T', levelGroup: 'B1-B2', answer: 'TALENTED', clueEn: 'Having natural skill for something.', clueTr: 'Yetenekli.'),
+  WordData(letter: 'U', levelGroup: 'B1-B2', answer: 'URGENT', clueEn: 'Requiring immediate action.', clueTr: 'İvedilikle yapılması gereken, acil.'),
+  WordData(letter: 'V', levelGroup: 'B1-B2', answer: 'VOLUNTEER', clueEn: 'A person who freely offers service.', clueTr: 'Karşılıksız çalışan, gönüllü.'),
+  WordData(letter: 'W', levelGroup: 'B1-B2', answer: 'WARNING', clueEn: 'A statement indicating danger.', clueTr: 'İkaz, uyarı.'),
+  WordData(letter: 'X', levelGroup: 'B1-B2', answer: 'XENOPHOBIA', clueEn: 'Prejudice against foreign people.', clueTr: 'Yabancı düşmanlığı.'),
+  WordData(letter: 'Y', levelGroup: 'B1-B2', answer: 'YIELD', clueEn: 'To produce financial or natural profit.', clueTr: 'Getiri, kazanç/hasılat.'),
+  WordData(letter: 'Z', levelGroup: 'B1-B2', answer: 'ZONE', clueEn: 'An area with a particular characteristic.', clueTr: 'Belirli bir alan, bölge.'),
 
-  // C1 - C2 (Akademik & Uzman)
-  WordData(letter: 'A', levelGroup: 'C1-C2', answer: 'AUTHENTIC', clueEn: 'Of undisputed origin and not a copy; genuinely real.', clueTr: 'Orijinal, taklit olmayan, hakiki, özgün.'),
-  WordData(letter: 'B', levelGroup: 'C1-C2', answer: 'BENEVOLENT', clueEn: 'Well meaning, kindly, and dedicated to charitable acts.', clueTr: 'Yardımsever, cömert, hayırsever ve iyilik dolu.'),
-  WordData(letter: 'C', levelGroup: 'C1-C2', answer: 'CONSCIENTIOUS', clueEn: 'Wishing to do one\'s work thoroughly and with deep moral duty.', clueTr: 'Görevine ve vicdanına bağlı, işini titizlikle yapan.'),
-  WordData(letter: 'D', levelGroup: 'C1-C2', answer: 'DILIGENT', clueEn: 'Showing persistent care and conscientious effort in duties.', clueTr: 'İşinde sebatkar, özenli ve gayretli çalışan.'),
-  WordData(letter: 'E', levelGroup: 'C1-C2', answer: 'ELOQUENT', clueEn: 'Fluent and persuasive in speaking or expressive rhetoric.', clueTr: 'Sözleri güzel, etkili ve akıcı olan; beliğ.'),
-  WordData(letter: 'F', levelGroup: 'C1-C2', answer: 'FASTIDIOUS', clueEn: 'Very attentive to detail, cleanliness, and accuracy; hard to please.', clueTr: 'Aşırı titiz, zor beğenen ve her ayrıntıya takılan kılı kırk yaran kimse.'),
-  WordData(letter: 'G', levelGroup: 'C1-C2', answer: 'GREGARIOUS', clueEn: 'Fond of social company and living in community groups.', clueTr: 'Sosyalleşmeye düşkün, topluluk içinde yaşamayı seven.'),
-  WordData(letter: 'H', levelGroup: 'C1-C2', answer: 'HYPOCRISY', clueEn: 'The practice of claiming to have moral standards one does not possess.', clueTr: 'Olduğundan farklı görünme hali, iki yüzlülük/riyakarlık.'),
-  WordData(letter: 'I', levelGroup: 'C1-C2', answer: 'IMPECCABLE', clueEn: 'In accordance with the highest standards; faultless and flawless.', clueTr: 'Hatasız, kusursuz ve eksiksiz nitelikte olan.'),
-  WordData(letter: 'J', levelGroup: 'C1-C2', answer: 'JUXTAPOSE', clueEn: 'To place different things together to create a contrasting effect.', clueTr: 'İki farklı nesne veya kavramı karşılaştırmak için yan yana getirmek.'),
-  WordData(letter: 'K', levelGroup: 'C1-C2', answer: 'KINETIC', clueEn: 'Relating to or resulting from mechanical motion.', clueTr: 'Hareketle ilgili olan veya hareketten kaynaklanan enerji, kinetik.'),
-  WordData(letter: 'L', levelGroup: 'C1-C2', answer: 'LUCID', clueEn: 'Expressed clearly; easy to understand and mentally sound.', clueTr: 'Anlaşılması son derece kolay, açık, berrak ve mantıklı.'),
-  WordData(letter: 'M', levelGroup: 'C1-C2', answer: 'METICULOUS', clueEn: 'Showing great attention to detail; very careful and precise.', clueTr: 'Detaylara olağanüstü özen gösteren, aşırı dikkatli kimse.'),
-  WordData(letter: 'N', levelGroup: 'C1-C2', answer: 'NEBULOUS', clueEn: 'In the form of a cloud or haze; unclear, vague, or ill-defined.', clueTr: 'Bulut gibi belirsiz, sınırları net çizilmemiş, muğlak.'),
-  WordData(letter: 'O', levelGroup: 'C1-C2', answer: 'OBSOLETE', clueEn: 'No longer produced or used; out of date.', clueTr: 'Kullanımdan kalkmış, eskimiş, çağı geçmiş; köhne.'),
-  WordData(letter: 'P', levelGroup: 'C1-C2', answer: 'PRAGMATIC', clueEn: 'Dealing with things sensibly based on practical considerations.', clueTr: 'Teoriden çok uygulanabilirliğe ve faydaya dayanan, faydacı.'),
-  WordData(letter: 'Q', levelGroup: 'C1-C2', answer: 'QUINTESSENCE', clueEn: 'The most perfect or typical example of a quality or class.', clueTr: 'Bir niteliğin veya durumun en mükemmel timsali, özü.'),
-  WordData(letter: 'R', levelGroup: 'C1-C2', answer: 'RESILIENT', clueEn: 'Able to withstand or recover quickly from difficult conditions.', clueTr: 'Zorluklara karşı esnek, çabuk toparlanan; mukavim.'),
-  WordData(letter: 'S', levelGroup: 'C1-C2', answer: 'SCRUPULOUS', clueEn: 'Diligent, thorough, and extremely attentive to moral standards.', clueTr: 'Ahlaki kurallara ve dürüstlüğe aşırı derecede özen gösteren.'),
-  WordData(letter: 'T', levelGroup: 'C1-C2', answer: 'TRANSIENT', clueEn: 'Lasting only for a short time; impermanent and fleeting.', clueTr: 'Kalıcı olmayan, gelip geçici, kısa süren; fani.'),
-  WordData(letter: 'U', levelGroup: 'C1-C2', answer: 'UBIQUITOUS', clueEn: 'Present, appearing, or found everywhere at the same time.', clueTr: 'Her yerde aynı anda hazır bulunan, her tarafta rastlanan.'),
-  WordData(letter: 'V', levelGroup: 'C1-C2', answer: 'VULNERABLE', clueEn: 'Exposed to the possibility of being attacked or harmed.', clueTr: 'Zarar görmeye veya darbeye açık, savunmasız/kırılgan.'),
-  WordData(letter: 'W', levelGroup: 'C1-C2', answer: 'WARY', clueEn: 'Feeling or showing caution about possible dangers or problems.', clueTr: 'Olası tehlikelere karşı tedbirli, tetikte davranan.'),
-  WordData(letter: 'X', levelGroup: 'C1-C2', answer: 'XENIAL', clueEn: 'Hospitable, especially to visiting foreigners or guests.', clueTr: 'Misafirlere ve yabancılara karşı konuksever olan.'),
-  WordData(letter: 'Y', levelGroup: 'C1-C2', answer: 'YEARN', clueEn: 'To have an intense, deep feeling of longing for something lost.', clueTr: 'Derin bir hasret veya özlem duymak, yanıp tutuşmak.'),
-  WordData(letter: 'Z', levelGroup: 'C1-C2', answer: 'ZEALOUS', clueEn: 'Having great energy and passion in pursuit of a cause.', clueTr: 'Bir amaç uğruna büyük gayret ve coşku gösteren; şevkli/hararetli.'),
+  // C1 - C2
+  WordData(letter: 'A', levelGroup: 'C1-C2', answer: 'AUTHENTIC', clueEn: 'Genuine and not a copy.', clueTr: 'Taklit olmayan, hakiki, özgün.'),
+  WordData(letter: 'B', levelGroup: 'C1-C2', answer: 'BENEVOLENT', clueEn: 'Kind and charitable to others.', clueTr: 'İyiliksever, hayırsever.'),
+  WordData(letter: 'C', levelGroup: 'C1-C2', answer: 'CONSCIENTIOUS', clueEn: 'Wishing to do work thoroughly.', clueTr: 'Vicdanlı, titiz çalışan.'),
+  WordData(letter: 'D', levelGroup: 'C1-C2', answer: 'DILIGENT', clueEn: 'Showing persistent care in duties.', clueTr: 'Sebatkar, gayretli.'),
+  WordData(letter: 'E', levelGroup: 'C1-C2', answer: 'ELOQUENT', clueEn: 'Fluent and persuasive in speech.', clueTr: 'Hitabeti güçlü, beliğ.'),
+  WordData(letter: 'F', levelGroup: 'C1-C2', answer: 'FASTIDIOUS', clueEn: 'Very attentive to detail; hard to please.', clueTr: 'Aşırı titiz, zor beğenen.'),
+  WordData(letter: 'G', levelGroup: 'C1-C2', answer: 'GREGARIOUS', clueEn: 'Fond of company; sociable.', clueTr: 'Sosyalleşmeyi seven.'),
+  WordData(letter: 'H', levelGroup: 'C1-C2', answer: 'HYPOCRISY', clueEn: 'Claiming moral standards one lacks.', clueTr: 'İki yüzlülük, riyakarlık.'),
+  WordData(letter: 'I', levelGroup: 'C1-C2', answer: 'IMPECCABLE', clueEn: 'Faultless and highest standard.', clueTr: 'Kusursuz, hatasız.'),
+  WordData(letter: 'J', levelGroup: 'C1-C2', answer: 'JUXTAPOSE', clueEn: 'Place together to create contrast.', clueTr: 'Karşılaştırmak için yan yana koymak.'),
+  WordData(letter: 'K', levelGroup: 'C1-C2', answer: 'KINETIC', clueEn: 'Relating to mechanical motion.', clueTr: 'Hareketle ilgili.'),
+  WordData(letter: 'L', levelGroup: 'C1-C2', answer: 'LUCID', clueEn: 'Expressed clearly; easy to understand.', clueTr: 'Berrak, anlaşılır.'),
+  WordData(letter: 'M', levelGroup: 'C1-C2', answer: 'METICULOUS', clueEn: 'Showing great attention to detail.', clueTr: 'Kılı kırk yaran, titiz.'),
+  WordData(letter: 'N', levelGroup: 'C1-C2', answer: 'NEBULOUS', clueEn: 'Unclear, vague, or ill-defined.', clueTr: 'Muğlak, belirsiz.'),
+  WordData(letter: 'O', levelGroup: 'C1-C2', answer: 'OBSOLETE', clueEn: 'No longer used; out of date.', clueTr: 'Kullanımdan kalkmış, köhne.'),
+  WordData(letter: 'P', levelGroup: 'C1-C2', answer: 'PRAGMATIC', clueEn: 'Dealing with things based on practical reasons.', clueTr: 'Faydacı, pratik.'),
+  WordData(letter: 'Q', levelGroup: 'C1-C2', answer: 'QUINTESSENCE', clueEn: 'The most perfect example of a quality.', clueTr: 'En saf timsali, özü.'),
+  WordData(letter: 'R', levelGroup: 'C1-C2', answer: 'RESILIENT', clueEn: 'Able to recover quickly from hardship.', clueTr: 'Dayanıklı, çabuk toparlanan.'),
+  WordData(letter: 'S', levelGroup: 'C1-C2', answer: 'SCRUPULOUS', clueEn: 'Attentive to moral details.', clueTr: 'Ahlaki titizlik gösteren.'),
+  WordData(letter: 'T', levelGroup: 'C1-C2', answer: 'TRANSIENT', clueEn: 'Lasting only for a short time.', clueTr: 'Gelip geçici, fani.'),
+  WordData(letter: 'U', levelGroup: 'C1-C2', answer: 'UBIQUITOUS', clueEn: 'Found everywhere at once.', clueTr: 'Her yerde var olan.'),
+  WordData(letter: 'V', levelGroup: 'C1-C2', answer: 'VULNERABLE', clueEn: 'Exposed to attack or harm.', clueTr: 'Savunmasız, kırılgan.'),
+  WordData(letter: 'W', levelGroup: 'C1-C2', answer: 'WARY', clueEn: 'Showing caution about danger.', clueTr: 'Tetikte olan, temkinli.'),
+  WordData(letter: 'X', levelGroup: 'C1-C2', answer: 'XENIAL', clueEn: 'Hospitable to visiting guests.', clueTr: 'Konuksever.'),
+  WordData(letter: 'Y', levelGroup: 'C1-C2', answer: 'YEARN', clueEn: 'Deep longing for something.', clueTr: 'Hasret çekmek.'),
+  WordData(letter: 'Z', levelGroup: 'C1-C2', answer: 'ZEALOUS', clueEn: 'Showing great energy for a cause.', clueTr: 'Şevkli, hararetli.'),
 ];
 
 class MainMenuScreen extends StatefulWidget {
@@ -171,7 +177,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 ),
                 const SizedBox(height: 4),
                 const Text(
-                  'English Vocabulary Game',
+                  'English Voice & Vocabulary Game',
                   style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13),
                 ),
                 const SizedBox(height: 32),
@@ -316,13 +322,15 @@ class _PassaparolaGameState extends State<PassaparolaGame> {
   int timerSeconds = 180;
   Timer? timer;
   bool isGameOver = false;
-
-  // Ses Tanıma Alanı
-  late stt.SpeechToText _speech;
-  bool _isListening = false;
-  String _spokenWords = '';
+  bool isEvaluating = false;
 
   final TextEditingController inputController = TextEditingController();
+  final FocusNode inputFocusNode = FocusNode();
+
+  late stt.SpeechToText _speech;
+  bool _isListening = false;
+  bool _voiceModeActive = false;
+  Timer? _speechSilenceTimer;
 
   @override
   void initState() {
@@ -330,6 +338,105 @@ class _PassaparolaGameState extends State<PassaparolaGame> {
     _speech = stt.SpeechToText();
     _prepareQuestions();
     _startTimer();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      inputFocusNode.requestFocus();
+    });
+  }
+
+  void _listenVoice() async {
+    if (isGameOver || isEvaluating) return;
+
+    if (!_isListening) {
+      bool available = await _speech.initialize(
+        onStatus: (status) {
+          if (status == 'done' || status == 'notListening') {
+            setState(() => _isListening = false);
+            if (_voiceModeActive && !isEvaluating && !isGameOver && mounted) {
+              Future.delayed(const Duration(milliseconds: 250), () {
+                if (_voiceModeActive && !isEvaluating && !isGameOver && mounted) {
+                  _startListeningSession();
+                }
+              });
+            }
+          }
+        },
+        onError: (err) {
+          setState(() => _isListening = false);
+          if (_voiceModeActive && !isEvaluating && !isGameOver && mounted) {
+            Future.delayed(const Duration(milliseconds: 300), () {
+              if (_voiceModeActive && !isEvaluating && !isGameOver && mounted) {
+                _startListeningSession();
+              }
+            });
+          }
+        },
+      );
+
+      if (available) {
+        _voiceModeActive = true;
+        _startListeningSession();
+      }
+    } else {
+      _voiceModeActive = false;
+      _speechSilenceTimer?.cancel();
+      setState(() => _isListening = false);
+      _speech.stop();
+    }
+  }
+
+  void _startListeningSession() {
+    if (isGameOver || isEvaluating || !_voiceModeActive) return;
+
+    setState(() => _isListening = true);
+
+    _speech.listen(
+      localeId: 'en_US',
+      listenFor: const Duration(seconds: 30),
+      pauseFor: const Duration(seconds: 4),
+      cancelOnError: false,
+      partialResults: true,
+      onResult: (result) {
+        if (isEvaluating || isGameOver) return;
+
+        final raw = result.recognizedWords.trim();
+        setState(() {
+          inputController.text = raw;
+        });
+
+        if (raw.isEmpty) return;
+
+        final upper = raw.toUpperCase();
+        final expected = questions[currentIndex].answer.toUpperCase();
+
+        // 1. SESLE PAS DENDİĞİ AN ENTER BEKLEMEDEN DİREKT GEÇ
+        if (upper.contains('PASS') || upper.contains('PAS') || upper.contains('NEXT')) {
+          _speechSilenceTimer?.cancel();
+          _speech.stop();
+          setState(() => _isListening = false);
+          passQuestion();
+          return;
+        }
+
+        // 2. DOĞRU KELİME AĞIZDAN ÇIKTIĞI AN ENTER BEKLEMEDEN DİREKT ONAYLA
+        if (upper == expected || upper.split(' ').contains(expected)) {
+          _speechSilenceTimer?.cancel();
+          _speech.stop();
+          setState(() => _isListening = false);
+          checkAnswer(expected);
+          return;
+        }
+
+        // 3. EĞER BAŞKA BİR ŞEY SÖYLEDİYSE VE 1 SANİYE SUSTUYSA OTOMATİK KONTROL ET
+        _speechSilenceTimer?.cancel();
+        _speechSilenceTimer = Timer(const Duration(milliseconds: 900), () {
+          if (!isEvaluating && !isGameOver && mounted && inputController.text.trim().isNotEmpty) {
+            _speech.stop();
+            setState(() => _isListening = false);
+            checkAnswer(inputController.text.trim());
+          }
+        });
+      },
+    );
   }
 
   void _prepareQuestions() {
@@ -346,21 +453,14 @@ class _PassaparolaGameState extends State<PassaparolaGame> {
       }
 
       pool.shuffle(random);
-      final chosen = pool.isNotEmpty
-          ? pool.first
-          : WordData(
-              letter: letter,
-              levelGroup: widget.levelGroup,
-              answer: '${letter}WORD',
-              clueEn: 'A vocabulary word starting with $letter.',
-              clueTr: '$letter harfi ile başlayan kelime.',
-            );
+      final chosen = pool.first;
 
       questions.add(
         ActiveQuestion(
           letter: letter,
           clue: widget.language == 'TR' ? chosen.clueTr : chosen.clueEn,
           answer: chosen.answer,
+          meaning: chosen.clueTr,
         ),
       );
     }
@@ -378,69 +478,75 @@ class _PassaparolaGameState extends State<PassaparolaGame> {
     });
   }
 
-  // Mikrofondan Konuşma Başlat / Durdur
-  Future<void> _listen() async {
-    if (!_isListening) {
-      bool available = await _speech.initialize(
-        onStatus: (val) {
-          if (val == 'done' || val == 'notListening') {
-            setState(() => _isListening = false);
-          }
-        },
-        onError: (val) => setState(() => _isListening = false),
-      );
+  void checkAnswer(String val) async {
+    if (isGameOver || isEvaluating) return;
+    _speechSilenceTimer?.cancel();
 
-      if (available) {
-        setState(() => _isListening = true);
-        _speech.listen(
-          localeId: 'en_US', // İngilizce kelimeleri net anlaması için
-          onResult: (val) {
-            setState(() {
-              _spokenWords = val.recognizedWords;
-              inputController.text = _spokenWords;
-            });
-            // Konuşma netleştiğinde otomatik kontrol et
-            if (val.hasConfidenceRating && val.confidence > 0.5) {
-              checkAnswer(_spokenWords);
-            }
-          },
-        );
-      }
-    } else {
-      setState(() => _isListening = false);
-      _speech.stop();
-    }
-  }
-
-  void checkAnswer(String val) {
-    if (isGameOver) return;
     final text = val.trim().toUpperCase();
-    if (text.isEmpty) return;
+    if (text.isEmpty) {
+      inputFocusNode.requestFocus();
+      return;
+    }
 
-    if (text == 'PAS' || text == 'PASS') {
+    if (text.contains('PASS') || text.contains('PAS') || text.contains('NEXT')) {
       passQuestion();
       return;
     }
 
     setState(() {
-      if (text == questions[currentIndex].answer) {
+      isEvaluating = true;
+      final expected = questions[currentIndex].answer.toUpperCase();
+      if (text == expected || text.split(' ').contains(expected)) {
         questions[currentIndex].state = LetterState.correct;
         score += 10;
       } else {
         questions[currentIndex].state = LetterState.wrong;
       }
+    });
+
+    // 0.8 saniye sonucu gör (yeşil/kırmızı)
+    await Future.delayed(const Duration(milliseconds: 800));
+
+    if (!mounted || isGameOver) return;
+
+    setState(() {
       inputController.clear();
+      isEvaluating = false;
       advanceLetter();
     });
+
+    inputFocusNode.requestFocus();
+
+    // Sesli moddaysa el değmeden yeni harfi dinlemeye başla
+    if (_voiceModeActive) {
+      _startListeningSession();
+    }
   }
 
-  void passQuestion() {
-    if (isGameOver) return;
+  void passQuestion() async {
+    if (isGameOver || isEvaluating) return;
+    _speechSilenceTimer?.cancel();
+
     setState(() {
+      isEvaluating = true;
       questions[currentIndex].state = LetterState.passed;
+    });
+
+    await Future.delayed(const Duration(milliseconds: 600));
+
+    if (!mounted || isGameOver) return;
+
+    setState(() {
       inputController.clear();
+      isEvaluating = false;
       advanceLetter();
     });
+
+    inputFocusNode.requestFocus();
+
+    if (_voiceModeActive) {
+      _startListeningSession();
+    }
   }
 
   void advanceLetter() {
@@ -460,7 +566,9 @@ class _PassaparolaGameState extends State<PassaparolaGame> {
 
   void _endGame() {
     timer?.cancel();
+    _speechSilenceTimer?.cancel();
     if (_isListening) _speech.stop();
+    _voiceModeActive = false;
     setState(() => isGameOver = true);
     _showGameOverDialog();
   }
@@ -469,6 +577,7 @@ class _PassaparolaGameState extends State<PassaparolaGame> {
     int correctCount = questions.where((q) => q.state == LetterState.correct).length;
     int wrongCount = questions.where((q) => q.state == LetterState.wrong).length;
     int passedCount = questions.where((q) => q.state == LetterState.passed || q.state == LetterState.idle).length;
+    List<ActiveQuestion> missedWords = questions.where((q) => q.state != LetterState.correct).toList();
 
     showDialog(
       context: context,
@@ -477,32 +586,84 @@ class _PassaparolaGameState extends State<PassaparolaGame> {
         backgroundColor: const Color(0xFF131D2E),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20), side: const BorderSide(color: Color(0xFF38BDF8), width: 1.5)),
         title: const Center(
-          child: Text(
-            '🏆 OYUN BİTTİ!',
-            style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900),
-          ),
+          child: Text('🏆 OYUN BİTTİ!', style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900)),
         ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(color: const Color(0xFF090D16), borderRadius: BorderRadius.circular(12)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Toplam Puan: ', style: TextStyle(color: Colors.white70, fontSize: 16)),
-                  Text('$score', style: const TextStyle(color: Color(0xFF38BDF8), fontSize: 24, fontWeight: FontWeight.w900)),
+        content: SizedBox(
+          width: double.maxFinite,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(color: const Color(0xFF090D16), borderRadius: BorderRadius.circular(12)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Toplam Puan: ', style: TextStyle(color: Colors.white70, fontSize: 16)),
+                      Text('$score', style: const TextStyle(color: Color(0xFF38BDF8), fontSize: 24, fontWeight: FontWeight.w900)),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 14),
+                _buildStatRow('✅ Doğru Cevap:', '$correctCount', const Color(0xFF10B981)),
+                const SizedBox(height: 6),
+                _buildStatRow('❌ Yanlış Cevap:', '$wrongCount', const Color(0xFFEF4444)),
+                const SizedBox(height: 6),
+                _buildStatRow('⏸ Pas / Boş:', '$passedCount', const Color(0xFFF59E0B)),
+                const SizedBox(height: 16),
+                if (missedWords.isNotEmpty) ...[
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('📖 ÖĞRENİLECEK KELİMELER', style: TextStyle(color: Color(0xFF38BDF8), fontSize: 12, fontWeight: FontWeight.bold, letterSpacing: 0.5)),
+                  ),
+                  const SizedBox(height: 8),
+                  Container(
+                    constraints: const BoxConstraints(maxHeight: 180),
+                    decoration: BoxDecoration(color: const Color(0xFF090D16), borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.white12)),
+                    child: ListView.separated(
+                      shrinkWrap: true,
+                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      itemCount: missedWords.length,
+                      separatorBuilder: (context, index) => const Divider(color: Colors.white10, height: 1),
+                      itemBuilder: (context, index) {
+                        final item = missedWords[index];
+                        final bool isWrong = item.state == LetterState.wrong;
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 22,
+                                height: 22,
+                                decoration: BoxDecoration(
+                                  color: isWrong ? const Color(0xFFEF4444).withValues(alpha: 0.2) : const Color(0xFFF59E0B).withValues(alpha: 0.2),
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(item.letter, style: TextStyle(color: isWrong ? const Color(0xFFEF4444) : const Color(0xFFF59E0B), fontWeight: FontWeight.bold, fontSize: 12)),
+                              ),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(item.answer, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13)),
+                                    Text(item.meaning, style: const TextStyle(color: Colors.white60, fontSize: 10), maxLines: 2, overflow: TextOverflow.ellipsis),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ],
-              ),
+              ],
             ),
-            const SizedBox(height: 16),
-            _buildStatRow('✅ Doğru Cevap:', '$correctCount', const Color(0xFF10B981)),
-            const SizedBox(height: 8),
-            _buildStatRow('❌ Yanlış Cevap:', '$wrongCount', const Color(0xFFEF4444)),
-            const SizedBox(height: 8),
-            _buildStatRow('⏸ Pas / Boş:', '$passedCount', const Color(0xFFF59E0B)),
-          ],
+          ),
         ),
         actions: [
           Center(
@@ -554,8 +715,10 @@ class _PassaparolaGameState extends State<PassaparolaGame> {
   @override
   void dispose() {
     timer?.cancel();
+    _speechSilenceTimer?.cancel();
     if (_isListening) _speech.stop();
     inputController.dispose();
+    inputFocusNode.dispose();
     super.dispose();
   }
 
@@ -645,10 +808,7 @@ class _PassaparolaGameState extends State<PassaparolaGame> {
                       width: 170,
                       height: 170,
                       padding: const EdgeInsets.all(12),
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF131D2E),
-                        shape: BoxShape.circle,
-                      ),
+                      decoration: const BoxDecoration(color: Color(0xFF131D2E), shape: BoxShape.circle),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -670,31 +830,49 @@ class _PassaparolaGameState extends State<PassaparolaGame> {
 
               const SizedBox(height: 18),
 
-              // Giriş / Mikrofon / Pas Butonları
+              // Kontrol Çubuğu
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
                   children: [
-                    // Mikrofon Butonu
-                    IconButton(
-                      iconSize: 32,
-                      icon: Icon(
-                        _isListening ? Icons.mic : Icons.mic_none,
-                        color: _isListening ? const Color(0xFFEF4444) : const Color(0xFF38BDF8),
+                    GestureDetector(
+                      onTap: _listenVoice,
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 250),
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: _isListening ? const Color(0xFFEF4444) : (_voiceModeActive ? const Color(0xFF38BDF8) : const Color(0xFF1E293B)),
+                          shape: BoxShape.circle,
+                          boxShadow: _isListening
+                              ? [BoxShadow(color: const Color(0xFFEF4444).withValues(alpha: 0.5), blurRadius: 10, spreadRadius: 2)]
+                              : [],
+                        ),
+                        child: Icon(
+                          _isListening ? Icons.mic : (_voiceModeActive ? Icons.mic : Icons.mic_none),
+                          color: Colors.white,
+                          size: 24,
+                        ),
                       ),
-                      onPressed: _listen,
                     ),
-                    const SizedBox(width: 4),
+                    const SizedBox(width: 8),
 
-                    // Metin Alanı
                     Expanded(
                       child: TextField(
                         controller: inputController,
+                        focusNode: inputFocusNode,
+                        autofocus: true,
+                        enabled: !isEvaluating,
                         onSubmitted: checkAnswer,
                         style: const TextStyle(color: Colors.white),
                         decoration: InputDecoration(
-                          hintText: _isListening ? 'Dinleniyor...' : 'Yazın veya mikrofona basın...',
-                          hintStyle: const TextStyle(color: Colors.white38),
+                          hintText: isEvaluating
+                              ? 'Cevap kontrol ediliyor...'
+                              : (_isListening ? 'Konuşun (Enter gerekmez)...' : 'Yazın veya mikrofona basın...'),
+                          hintStyle: TextStyle(
+                            color: isEvaluating
+                                ? const Color(0xFFF59E0B)
+                                : (_isListening ? const Color(0xFF38BDF8) : Colors.white38),
+                          ),
                           filled: true,
                           fillColor: const Color(0xFF1E293B),
                           contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
@@ -702,26 +880,24 @@ class _PassaparolaGameState extends State<PassaparolaGame> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 6),
 
-                    // Gönder
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF10B981),
                         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
                       ),
-                      onPressed: () => checkAnswer(inputController.text),
+                      onPressed: isEvaluating ? null : () => checkAnswer(inputController.text),
                       child: const Text('OK', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                     ),
                     const SizedBox(width: 6),
 
-                    // Pas
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFF59E0B),
                         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
                       ),
-                      onPressed: passQuestion,
+                      onPressed: isEvaluating ? null : passQuestion,
                       child: const Text('PAS', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
                     ),
                   ],
